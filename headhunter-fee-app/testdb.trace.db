@@ -1,0 +1,6 @@
+2018-07-17 15:13:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TEST" not found; SQL statement:
+insert into test values(1,'a') [42102-197]
+2018-07-17 15:14:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "HEAD_HUNTER3" already exists; SQL statement:
+create table head_hunter3( id INT NOT NULL, firstname varchar(100), lastname varchar(100), mobile INT(10), PRIMARY KEY (id) ) [42101-197]

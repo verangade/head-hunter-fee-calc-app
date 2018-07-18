@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Head Hunter Fee Calculator</title>
+
+<link href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<script src="/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="/webjars/jquery/1.9.1/jquery.min.js"></script>
+
+</head>
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h1>All Head Hunters</h1>
+			<table class="table table-bordered">
+				<tr>
+					<th>ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Phone</th>
+					<th></th>
+				</tr>
+				<tr th:each="headhunter:${headHunterList}">
+					<td th:text="${headhunter.id}"></td>
+					<!-- <td th:text="${headhunter.firstName}"></td> -->
+					<td><a th:text="${headhunter.firstName}"
+						th:href="@{|headhunter/${headhunter.id}/recruitments|}"></a></td>
+					<td th:text="${headhunter.lastName}"></td>
+					<td th:text="${headhunter.phone}"></td>
+					<td><a class="btn btn-primary" 
+						th:href="@{|headhunter/${headhunter.id}/recruitments|}">Show Recruitments</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

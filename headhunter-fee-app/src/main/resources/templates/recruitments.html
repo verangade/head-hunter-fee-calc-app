@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Recruitments</title>
+
+<link href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="/webjars/jquery/1.9.1/jquery.min.js"></script>
+
+</head>
+<body>
+	<div class="container">
+		<div class="page-header">
+			<table class="table table-bordered">
+				<h1>
+					Recruitments Done By <span th:text="${headHunter.firstName} +' '+${headHunter.lastName}"></span>
+					For Month <span th:text="${#temporals.monthName(todayDate)}"></span>
+					<span th:text="${#temporals.year(todayDate)}"></span>
+				</h1>
+				<tr>
+					<!-- <th>Id</th> -->
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Phone</th>
+					<th>Skill</th>
+					<th>Joined Date</th>
+				</tr>
+				<tr th:each="recruit:${recruitList}">
+					<!-- <td th:text="${recruit.personId}"></td> -->
+					<td th:text="${recruit.firstName}"></td>
+					<td th:text="${recruit.lastName}"></td>
+					<td th:text="${recruit.phone}"></td>
+
+					<td th:if="${recruit.skill == 'M'}  ">Mason</td>
+					<td th:if="${recruit.skill == 'C'}  ">Carpenter</td>
+					<!-- <td th:text="${recruit.joinedDate}"></td> -->
+					<td th:text="${#dates.format(recruit.joinedDate, 'yyyy-MM-dd')}"></td>
+				</tr>
+			</table>
+			<br> <a class="btn btn-primary" th:href="@{|/headhunter/${headHunterId}/calculate|}">Calculate HeadHunter Fee</a> 
+			<a class="btn btn-primary" href="/headhunter">Back</a>
+		</div>
+	</div>
+</body>
+</html>
