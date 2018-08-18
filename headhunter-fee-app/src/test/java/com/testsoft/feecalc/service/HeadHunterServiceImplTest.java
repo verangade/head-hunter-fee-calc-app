@@ -84,4 +84,53 @@ public class HeadHunterServiceImplTest {
 	}
 	
 	
+	@Test
+	public void calculateHeadHunterFeeCommisonTest() {
+		
+		Recruit recruit3 = new Recruit();
+		recruit3.setFirstName("Jhon");
+		recruit3.setLastName("Doe");
+		recruit3.setPhone(0711234567);
+		recruit3.setSkill("M");
+		
+		Recruit recruit4 = new Recruit();
+		recruit4.setFirstName("Jane");
+		recruit4.setLastName("Doe");
+		recruit4.setPhone(0721234567);
+		recruit4.setSkill("C");
+		
+		Recruit recruit5 = new Recruit();
+		recruit5.setFirstName("Jhon");
+		recruit5.setLastName("Doe");
+		recruit5.setPhone(0711234567);
+		recruit5.setSkill("M");
+		
+		Recruit recruit6 = new Recruit();
+		recruit6.setFirstName("Jane");
+		recruit6.setLastName("Doe");
+		recruit6.setPhone(0721234567);
+		recruit6.setSkill("C");
+		
+		Recruit recruit7 = new Recruit();
+		recruit6.setFirstName("Jane");
+		recruit6.setLastName("Doe");
+		recruit6.setPhone(0721234567);
+		recruit6.setSkill("C");
+		
+		
+		this.recruitList.add(recruit3);
+		this.recruitList.add(recruit4);
+		this.recruitList.add(recruit5);
+		this.recruitList.add(recruit6);
+		this.recruitList.add(recruit7);
+		
+		
+		Mockito.when(recruitRepository.findByHeadHunterIdAndJoinedDate(1111)).thenReturn(recruitList);
+		
+		HeadHunterFeeDto feeDto = headhunterService.calculateHeadHunterFee(recruitList);
+		assertThat(feeDto).isNotNull();
+		//assertThat(feeDto.).isNotNull();
+	}
+	
+	
 }
